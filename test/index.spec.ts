@@ -8,9 +8,9 @@ dotenv.config();
 
 const endpoint = process.env.COSMOS_ENDPOINT || '';
 const cosmosKey = process.env.COSMOS_KEY;
-const databaseId =
-  process.env.COSMOS_DATABASE || CosmosStore.DEFAULT_CONTAINER_NAME;
-const containerId = process.env.COSMOS_CONTAINER || '';
+const databaseId = process.env.COSMOS_DATABASE || 'database';
+const containerId =
+  process.env.COSMOS_CONTAINER || CosmosStore.DEFAULT_CONTAINER_NAME;
 
 const client = new CosmosClient({
   endpoint: endpoint,
