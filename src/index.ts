@@ -131,6 +131,7 @@ export default class CosmosStore extends Store {
         // Upsert session without TTL
         await this.container.items.create({ ...sessionItem });
       }
+      callback(null);
     } catch (error) {
       callback(error);
     }
@@ -148,6 +149,7 @@ export default class CosmosStore extends Store {
   ): Promise<void> {
     try {
       await this.container.item(sid, sid).delete();
+      callback(null);
     } catch (error) {
       callback(error);
     }
@@ -193,6 +195,7 @@ export default class CosmosStore extends Store {
       const { containerName } = CosmosStore.options;
       await this.database?.container(containerName).delete();
       await this.createContainer();
+      return callback();
     } catch (error) {
       callback(error);
     }
